@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-3">All Letters</h2>
+<form method="GET" action="{{ url_for('index') }}" class="mb-3 d-flex">
+    <input type="text" name="q" class="form-control me-2" placeholder="Search by sender or recipient">
+    <button type="submit" class="btn btn-info">🔍 Search</button>
+</form>
+
+<table class="table table-bordered table-hover bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Sender</th>
+            <th>Recipient</th>
+            <th>Subject</th>
+            <th>Content</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for letter in letters %}
+    <tr>
+        <td>{{ letter.id }}</td>
+        <td>{{ letter.sender }}</td>
+        <td>{{ letter.recipient }}</td>
+        <td>{{ letter.subject }}</td>
+        <td>{{ letter.content }}</td>
+        <td>
+            <a href="{{ url_for('edit', id=letter.id) }}" class="btn btn-warning btn-sm">✏️ Edit</a>
+            <a href="{{ url_for('delete', id=letter.id) }}" class="btn btn-danger btn-sm">🗑️ Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

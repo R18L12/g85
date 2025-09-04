@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-3">🗑️ Trash Bin</h2>
+<table class="table table-bordered table-hover bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Sender</th>
+            <th>Recipient</th>
+            <th>Subject</th>
+            <th>Content</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for letter in letters %}
+    <tr>
+        <td>{{ letter.id }}</td>
+        <td>{{ letter.sender }}</td>
+        <td>{{ letter.recipient }}</td>
+        <td>{{ letter.subject }}</td>
+        <td>{{ letter.content }}</td>
+        <td>
+            <a href="{{ url_for('restore', id=letter.id) }}" class="btn btn-success btn-sm">♻ Restore</a>
+            <a href="{{ url_for('hard_delete', id=letter.id) }}" class="btn btn-danger btn-sm">❌ Delete Permanently</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="6" class="text-center">No deleted letters</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

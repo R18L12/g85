@@ -1,0 +1,177 @@
+/* ----------------------
+   Base Styles
+----------------------- */
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; 
+    color: #f5f5f5;
+    background: linear-gradient(-45deg, #0d0d0d, #1a1a1a, #0d0d0d, #1a1a1a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* Gradient background animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ----------------------
+   Preloader Styles
+----------------------- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0d0d0d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 1s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+}
+
+.swirl {
+    width: 80px;
+    height: 80px;
+    border: 8px solid #00c6ff;
+    border-top: 8px solid transparent;
+    border-radius: 50%;
+    animation: swirlSpin 1.2s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes swirlSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preloader-text {
+    color: #00c6ff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    animation: fadeIn 1.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* ----------------------
+   Navbar
+----------------------- */
+.navbar {
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* ----------------------
+   Buttons
+----------------------- */
+.btn {
+    border: none;
+    color: #fff !important;
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    border-radius: 6px;
+    padding: 8px 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    background: linear-gradient(45deg, #0056b3, #0096c7);
+}
+
+/* ----------------------
+   Inputs & Floating Labels
+----------------------- */
+input, textarea, select {
+    background: #ffffff !important;
+    color: #000 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: none;
+    transition: border 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none !important;
+    border-color: #007bff !important;
+    box-shadow: 0 0 5px rgba(0,123,255,0.6);
+}
+
+.position-relative {
+    position: relative;
+}
+
+.form-label {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    pointer-events: none;
+    transition: 0.3s ease all;
+    color: #aaa;
+}
+
+input:focus + .form-label,
+input:not(:placeholder-shown) + .form-label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #00c6ff;
+    background: #1a1a1a;
+    padding: 0 4px;
+}
+
+/* ----------------------
+   Cards & Containers
+----------------------- */
+.card, .container {
+    background: #1a1a1a !important;
+    border: 1px solid #2c2c2c;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    padding: 20px;
+    border-radius: 12px;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Fade-in animation for cards */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ----------------------
+   Headings
+----------------------- */
+h1, h2, h3 {
+    color: #ffffff;
+    font-weight: 600;
+}

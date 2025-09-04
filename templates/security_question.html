@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card bg-dark text-light shadow-lg animate__animated animate__fadeInDown">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">❓ Security Question</h3>
+
+                    <p class="text-center">{{ question }}</p>
+
+                    <form method="POST" action="{{ url_for('verify_security') }}">
+                        <input type="hidden" name="username" value="{{ username }}">
+                        <div class="mb-3">
+                            <label for="security_answer" class="form-label">Answer</label>
+                            <input type="text" class="form-control" id="security_answer" name="security_answer" placeholder="Enter your answer" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-warning w-100">Verify</button>
+                    </form>
+
+                    <p class="mt-3 text-center">
+                        <a href="{{ url_for('login') }}" class="text-info">Back to Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
