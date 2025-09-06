@@ -1,24 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2 class="mb-3">Edit Letter</h2>
-<form method="POST" class="bg-black p-4 rounded shadow-sm">
-    <div class="mb-3">
-        <label class="form-label">Sender</label>
-        <input type="text" class="form-control" name="sender" value="{{ letter.sender }}" required>
+<div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <h2 class="mb-3 text-center">Edit Letter</h2>
+        <form method="POST" class="bg-black p-4 rounded shadow-sm">
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="sender" name="sender" value="{{ letter.sender }}" placeholder="Sender" required>
+                <label for="sender">Sender</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="recipient" name="recipient" value="{{ letter.recipient }}" placeholder="Recipient" required>
+                <label for="recipient">Recipient</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="subject" name="subject" value="{{ letter.subject }}" placeholder="Subject" required>
+                <label for="subject">Subject</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="content" name="content" placeholder="Content" style="height:120px;" required>{{ letter.content }}</textarea>
+                <label for="content">Content</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">✏️ Save Changes</button>
+        </form>
     </div>
-    <div class="mb-3">
-        <label class="form-label">Recipient</label>
-        <input type="text" class="form-control" name="recipient" value="{{ letter.recipient }}" required>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Subject</label>
-        <input type="text" class="form-control" name="subject" value="{{ letter.subject }}" required>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Content</label>
-        <textarea class="form-control" name="content" rows="4" required>{{ letter.content }}</textarea>
-    </div>
-    <button type="submit" class="btn btn-warning">✏️ Update Letter</button>
-</form>
+</div>
 {% endblock %}

@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
+{% block title %}Register{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card bg-dark text-light shadow-lg">
-                <div class="card-body">
+        <!-- Flexible column widths for different screen sizes -->
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card bg-dark text-light shadow-lg rounded-4">
+                <div class="card-body p-4">
                     <h3 class="text-center mb-4">📝 Register</h3>
 
                     {% if error %}

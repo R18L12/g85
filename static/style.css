@@ -92,8 +92,9 @@ html, body {
     color: #fff !important;
     background: linear-gradient(45deg, #007bff, #00c6ff);
     border-radius: 6px;
-    padding: 8px 16px;
+    padding: 10px 16px;
     transition: all 0.3s ease-in-out;
+    font-size: 1rem;
 }
 
 .btn:hover {
@@ -110,9 +111,10 @@ input, textarea, select {
     color: #000 !important;
     border: 1px solid #ccc !important;
     border-radius: 6px;
-    padding: 10px;
+    padding: 12px;
     box-shadow: none;
-    transition: border 0.3s;
+    transition: border 0.3s, background 0.3s, color 0.3s;
+    font-size: 1rem;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -121,21 +123,19 @@ input:focus, textarea:focus, select:focus {
     box-shadow: 0 0 5px rgba(0,123,255,0.6);
 }
 
-.position-relative {
-    position: relative;
-}
-
 .form-label {
     position: absolute;
     left: 12px;
     top: 12px;
     pointer-events: none;
     transition: 0.3s ease all;
-    color: #aaa;
+    color: #555; /* darker label for better visibility on white input */
 }
 
 input:focus + .form-label,
-input:not(:placeholder-shown) + .form-label {
+textarea:focus + .form-label,
+input:not(:placeholder-shown) + .form-label,
+textarea:not(:placeholder-shown) + .form-label {
     top: -10px;
     left: 10px;
     font-size: 0.8rem;
@@ -147,13 +147,17 @@ input:not(:placeholder-shown) + .form-label {
 /* ----------------------
    Cards & Containers
 ----------------------- */
-.card, .container {
+.card {
     background: #1a1a1a !important;
     border: 1px solid #2c2c2c;
     box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    padding: 20px;
     border-radius: 12px;
     animation: fadeInUp 0.8s ease forwards;
+}
+
+.container {
+    background: none !important;
+    padding: 20px;
 }
 
 /* Fade-in animation for cards */
@@ -174,4 +178,49 @@ input:not(:placeholder-shown) + .form-label {
 h1, h2, h3 {
     color: #ffffff;
     font-weight: 600;
+}
+
+/* ----------------------
+   Responsive Tables
+----------------------- */
+.table {
+    background: #fff;
+    color: #000;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: #222;
+    color: #fff;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* ----------------------
+   Mobile Adjustments
+----------------------- */
+@media (max-width: 576px) {
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.2rem; }
+
+    .container {
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 10px 14px;
+    }
+
+    input, textarea, select {
+        font-size: 0.9rem;
+    }
 }

@@ -1,24 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2 class="mb-3">Add New Letter</h2>
-<form method="POST" class="bg-black p-4 rounded shadow-sm">
-    <div class="mb-3">
-        <label class="form-label">Sender</label>
-        <input type="text" class="form-control" name="sender" required>
+<div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <h2 class="mb-3 text-center">Add New Letter</h2>
+        <form method="POST" class="bg-black p-4 rounded shadow-sm">
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="sender" name="sender" placeholder="Sender" required>
+                <label for="sender">Sender</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="recipient" name="recipient" placeholder="Recipient" required>
+                <label for="recipient">Recipient</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                <label for="subject">Subject</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="content" name="content" placeholder="Content" style="height:120px;" required></textarea>
+                <label for="content">Content</label>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">➕ Add Letter</button>
+        </form>
     </div>
-    <div class="mb-3">
-        <label class="form-label">Recipient</label>
-        <input type="text" class="form-control" name="recipient" required>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Subject</label>
-        <input type="text" class="form-control" name="subject" required>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Content</label>
-        <textarea class="form-control" name="content" rows="4" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-success">➕ Add Letter</button>
-</form>
+</div>
 {% endblock %}

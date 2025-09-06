@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Letter Management System</title>
+
+    <!-- Mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=1">
 </head>
@@ -21,20 +28,27 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
   <div class="container-fluid">
     <a class="navbar-brand neon-flicker" href="{{ url_for('index') }}">📨 Group 85's Letter System</a>
-    <div class="d-flex gap-2">
-      <a class="btn btn-outline-light" href="{{ url_for('index') }}">🏠 Home</a>
-      <a class="btn btn-success" href="{{ url_for('add') }}">➕ Add New Letter</a>
-      <a class="btn btn-warning" href="{{ url_for('trash') }}">🗑 Trash</a>
-      <a class="btn btn-info" href="{{ url_for('credits') }}">👥 Credits</a>
-      <a class="btn btn-danger" href="{{ url_for('logout') }}">🚪 Logout</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="d-flex flex-column flex-lg-row gap-2 ms-lg-auto">
+        <a class="btn btn-outline-light" href="{{ url_for('index') }}">🏠 Home</a>
+        <a class="btn btn-success" href="{{ url_for('add') }}">➕ Add New Letter</a>
+        <a class="btn btn-warning" href="{{ url_for('trash') }}">🗑 Trash</a>
+        <a class="btn btn-info" href="{{ url_for('credits') }}">👥 Credits</a>
+        <a class="btn btn-danger" href="{{ url_for('logout') }}">🚪 Logout</a>
+      </div>
     </div>
   </div>
 </nav>
 
 <!-- Main Content -->
-<div class="container">
+<main class="container mb-5">
     {% block content %}{% endblock %}
-</div>
+</main>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

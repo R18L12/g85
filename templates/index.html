@@ -1,37 +1,43 @@
 {% extends 'base.html' %}
+{% block title %}All Letters{% endblock %}
 
 {% block content %}
 <h2 class="mb-3">All Letters</h2>
-<form method="GET" action="{{ url_for('index') }}" class="mb-3 d-flex">
-    <input type="text" name="q" class="form-control me-2" placeholder="Search by sender or recipient">
+
+<!-- Search Form -->
+<form method="GET" action="{{ url_for('index') }}" class="mb-3 d-flex flex-column flex-sm-row gap-2">
+    <input type="text" name="q" class="form-control" placeholder="Search by sender or recipient">
     <button type="submit" class="btn btn-info">🔍 Search</button>
 </form>
 
-<table class="table table-bordered table-hover bg-white shadow-sm">
-    <thead class="table-dark">
+<!-- Responsive Table -->
+<div class="table-responsive">
+    <table class="table table-bordered table-hover bg-white shadow-sm align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Sender</th>
+                <th>Recipient</th>
+                <th style="max-width: 150px;">Subject</th>
+                <th style="max-width: 250px;">Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for letter in letters %}
         <tr>
-            <th>ID</th>
-            <th>Sender</th>
-            <th>Recipient</th>
-            <th>Subject</th>
-            <th>Content</th>
-            <th>Actions</th>
+            <td>{{ letter.id }}</td>
+            <td>{{ letter.sender }}</td>
+            <td>{{ letter.recipient }}</td>
+            <td class="text-truncate" style="max-width: 150px;">{{ letter.subject }}</td>
+            <td class="text-truncate" style="max-width: 250px;">{{ letter.content }}</td>
+            <td class="d-flex flex-column flex-sm-row gap-2">
+                <a href="{{ url_for('edit', id=letter.id) }}" class="btn btn-warning btn-sm">✏️ Edit</a>
+                <a href="{{ url_for('delete', id=letter.id) }}" class="btn btn-danger btn-sm">🗑️ Delete</a>
+            </td>
         </tr>
-    </thead>
-    <tbody>
-    {% for letter in letters %}
-    <tr>
-        <td>{{ letter.id }}</td>
-        <td>{{ letter.sender }}</td>
-        <td>{{ letter.recipient }}</td>
-        <td>{{ letter.subject }}</td>
-        <td>{{ letter.content }}</td>
-        <td>
-            <a href="{{ url_for('edit', id=letter.id) }}" class="btn btn-warning btn-sm">✏️ Edit</a>
-            <a href="{{ url_for('delete', id=letter.id) }}" class="btn btn-danger btn-sm">🗑️ Delete</a>
-        </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
